@@ -2,32 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CloudMoon Community Mirror</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            overflow: hidden; /* Prevents double scrollbars */
-            background-color: #000;
-        }
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudMoon Community Portal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <iframe 
-        src="https://web.cloudmoonapp.com/" 
-        allow="autoplay; fullscreen; keyboard; gamepad" 
-        id="cloudmoon-frame">
-    </iframe>
+
+    <div id="main-ui">
+        <header>
+            <img src="https://web.cloudmoonapp.com/logo.png" alt="Logo" class="logo">
+            <h1>CloudMoon Community</h1>
+        </header>
+
+        <div class="game-grid">
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150x150?text=Game+Icon" class="game-icon">
+                <button class="play-btn" onclick="launchGame('https://web.cloudmoonapp.com/')">Play Now</button>
+            </div>
+
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150x150?text=Game+Icon" class="game-icon">
+                <button class="play-btn" onclick="launchGame('https://web.cloudmoonapp.com/')">Play Now</button>
+            </div>
+
+            </div>
+    </div>
+
+    <div id="game-overlay">
+        <button class="close-btn" onclick="closeGame()">× Close Game</button>
+        <iframe id="game-frame" src="" allow="autoplay; fullscreen; keyboard; gamepad"></iframe>
+    </div>
+
+    <script>
+        function launchGame(url) {
+            document.getElementById('game-frame').src = url;
+            document.getElementById('game-overlay').style.display = 'block';
+            document.getElementById('main-ui').style.display = 'none';
+        }
+
+        function closeGame() {
+            document.getElementById('game-frame').src = '';
+            document.getElementById('game-overlay').style.display = 'none';
+            document.getElementById('main-ui').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
