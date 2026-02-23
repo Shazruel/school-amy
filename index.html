@@ -1,39 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloudMoon Roxy+ Mirror</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <div id="hub-ui">
-        <div class="search-container">
-            <input type="text" id="gameSearch" placeholder="🔍 Search for a game..." onkeyup="filterGames()">
-        </div>
-
-        <div class="hub-card">
-            <div class="hub-header">ROXY+ HUB</div>
-            
-            <div class="horizontal-scroll" id="gameList">
-                </div>
-        </div>
-
-        <div class="footer-nav">
-            <button class="nav-btn active">Dashboard</button>
-            <button class="nav-btn" onclick="openMirror('https://web.cloudmoonapp.com/')">Full App</button>
-        </div>
-    </div>
-
-    <div id="mirror-layer">
-        <div class="top-controls">
-            <button onclick="closeMirror()">Back to Hub</button>
-            <span id="current-status">Playing: CloudMoon</span>
-        </div>
-        <iframe id="mirror-frame" src="" allow="autoplay; fullscreen; keyboard; gamepad"></iframe>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+<iframe 
+    id="mirror-frame" 
+    src="" 
+    allow="autoplay; fullscreen; keyboard; gamepad"
+    sandbox="allow-forms allow-scripts allow-same-origin allow-presentation"
+></iframe>

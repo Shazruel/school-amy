@@ -1,10 +1,12 @@
 [[redirects]]
-  from = "/*"
+  from = "/app/*"
   to = "https://web.cloudmoonapp.com/:splat"
   status = 200
+  force = true
 
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "ALLOWALL"
-    Content-Security-Policy = "frame-ancestors *"
+    Content-Security-Policy = "frame-ancestors 'self' *"
+    Access-Control-Allow-Origin = "*"

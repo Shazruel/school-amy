@@ -1,10 +1,7 @@
-// Game List Database
 const games = [
-    { id: 1, name: "Genshin Impact", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" },
-    { id: 2, name: "Roblox", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" },
-    { id: 3, name: "Free Fire", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" },
-    { id: 4, name: "Mobile Legends", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" },
-    { id: 5, name: "PUBG Mobile", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" }
+    { id: 1, name: "Genshin Impact", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "/app/" },
+    { id: 2, name: "Roblox", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "/app/" },
+    // Use "/app/" as the URL so Netlify proxies it instead of redirecting
 ];
 
 function renderGames(data) {
@@ -12,30 +9,25 @@ function renderGames(data) {
     list.innerHTML = data.map(game => `
         <div class="game-card">
             <img src="${game.icon}" alt="${game.name}">
+            <div style="font-size: 0.7rem; margin-top: 5px;">${game.name}</div>
             <button class="play-btn" onclick="openMirror('${game.url}')">PLAY NOW</button>
         </div>
     `).join('');
 }
 
-// Initial Load
-renderGames(games);
-
-// Search Function
-function filterGames() {
-    const query = document.getElementById('gameSearch').value.toLowerCase();
-    const filtered = games.filter(g => g.name.toLowerCase().includes(query));
-    renderGames(filtered);
-}
-
-// Mirror System (Loads game on same address)
 function openMirror(url) {
-    document.getElementById('mirror-frame').src = url;
+    const frame = document.getElementById('mirror-frame');
+    // We set the source to our own subdomain path to keep the URL consistent
+    frame.src = url; 
     document.getElementById('mirror-layer').style.display = 'block';
     document.getElementById('hub-ui').style.display = 'none';
 }
 
 function closeMirror() {
-    document.getElementById('mirror-frame').src = '';
+    const frame = document.getElementById('mirror-frame');
+    frame.src = 'about:blank'; // Clears the game session when closing
     document.getElementById('mirror-layer').style.display = 'none';
     document.getElementById('hub-ui').style.display = 'block';
 }
+
+renderGames(games);
