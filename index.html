@@ -2,38 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloudMoon Community | Official Mirror</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="description" content="Official community portal for CloudMoon Cloud Gaming. Access the app and join our community.">
-    <link rel="icon" href="https://web.cloudmoonapp.com/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CloudMoon Community Mirror</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Prevents double scrollbars */
+            background-color: #000;
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="https://web.cloudmoonapp.com/logo.png" alt="CloudMoon Logo" class="logo">
-            <h1>CloudMoon Community</h1>
-            <p>Your gateway to mobile cloud gaming.</p>
-        </header>
-
-        <main>
-            <div class="card">
-                <h2>Launch CloudMoon</h2>
-                <p>Access the official web version directly.</p>
-                <a href="https://web.cloudmoonapp.com/" class="btn-primary">Play Now</a>
-            </div>
-
-            <div class="links">
-                <h3>Community Links</h3>
-                <a href="#" class="btn-secondary">Join Discord</a>
-                <a href="#" class="btn-secondary">Official Telegram</a>
-                <a href="#" class="btn-secondary">Support Center</a>
-            </div>
-        </main>
-
-        <footer>
-            <p>&copy; 2024 CloudMoon Mod Team. All rights reserved.</p>
-        </footer>
-    </div>
+    <iframe 
+        src="https://web.cloudmoonapp.com/" 
+        allow="autoplay; fullscreen; keyboard; gamepad" 
+        id="cloudmoon-frame">
+    </iframe>
 </body>
 </html>
