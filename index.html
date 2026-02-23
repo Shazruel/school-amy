@@ -3,48 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloudMoon Community Portal</title>
+    <title>CloudMoon Roxy+ Hub</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://web.cloudmoonapp.com/favicon.ico">
 </head>
 <body>
 
-    <div id="main-ui">
-        <header>
-            <img src="https://web.cloudmoonapp.com/logo.png" alt="Logo" class="logo">
-            <h1>CloudMoon Community</h1>
-        </header>
-
-        <div class="game-grid">
-            <div class="game-card">
-                <img src="https://via.placeholder.com/150x150?text=Game+Icon" class="game-icon">
-                <button class="play-btn" onclick="launchGame('https://web.cloudmoonapp.com/')">Play Now</button>
+    <div class="hub-container">
+        <div class="user-profile">
+            <div class="avatar-glow">
+                <img src="https://web.cloudmoonapp.com/favicon.ico" alt="User">
             </div>
+        </div>
 
-            <div class="game-card">
-                <img src="https://via.placeholder.com/150x150?text=Game+Icon" class="game-icon">
-                <button class="play-btn" onclick="launchGame('https://web.cloudmoonapp.com/')">Play Now</button>
-            </div>
+        <div class="hub-card">
+            <div class="hub-header">ROXY+ HUB</div>
+            
+            <nav class="hub-menu">
+                <div class="menu-item active" onclick="showSection('dashboard')">
+                    <span>🏠</span> Dashboard
+                </div>
+                <div class="menu-item" onclick="showSection('games')">
+                    <span>🎮</span> Game List
+                </div>
+                <div class="menu-item" onclick="login()">
+                    <span>👤</span> Account / Login
+                </div>
+                <div class="menu-item" onclick="window.open('https://discord.gg/yourlink')">
+                    <span>💬</span> Discord
+                </div>
+            </nav>
+        </div>
 
-            </div>
+        <div id="game-list-container" class="game-display" style="display:none;">
+            <div class="hub-header">AVAILABLE GAMES</div>
+            <div id="games-grid" class="grid">
+                </div>
+            <button class="back-btn" onclick="showSection('dashboard')">Back</button>
+        </div>
     </div>
 
-    <div id="game-overlay">
-        <button class="close-btn" onclick="closeGame()">× Close Game</button>
-        <iframe id="game-frame" src="" allow="autoplay; fullscreen; keyboard; gamepad"></iframe>
-    </div>
-
-    <script>
-        function launchGame(url) {
-            document.getElementById('game-frame').src = url;
-            document.getElementById('game-overlay').style.display = 'block';
-            document.getElementById('main-ui').style.display = 'none';
-        }
-
-        function closeGame() {
-            document.getElementById('game-frame').src = '';
-            document.getElementById('game-overlay').style.display = 'none';
-            document.getElementById('main-ui').style.display = 'block';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
