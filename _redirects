@@ -1,3 +1,9 @@
-/main  https://web.cloudmoonapp.com/  200!
-/assets/* https://web.cloudmoonapp.com/:splat  200!
-/api/* https://web.cloudmoonapp.com/:splat  200!
+# Route API calls to the real server
+/api/* https://web.cloudmoonapp.com/api/:splat  200!
+/socket.io/* https://web.cloudmoonapp.com/socket.io/:splat  101!
+
+# Route assets to the real server if they are missing locally
+/assets/* https://web.cloudmoonapp.com/assets/:splat  200!
+
+# SPA Fallback
+/* /index.html  200
