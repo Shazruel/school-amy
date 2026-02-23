@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/*"
+  to = "https://web.cloudmoonapp.com/:splat"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "ALLOWALL"
+    Content-Security-Policy = "frame-ancestors *"

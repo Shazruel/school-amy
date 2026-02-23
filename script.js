@@ -1,41 +1,41 @@
-// Sample Game Data (You can later connect this to a real API)
+// Game List Database
 const games = [
-    { name: "Roblox", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" },
-    { name: "Free Fire", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" },
-    { name: "Genshin", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" }
+    { id: 1, name: "Genshin Impact", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" },
+    { id: 2, name: "Roblox", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" },
+    { id: 3, name: "Free Fire", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" },
+    { id: 4, name: "Mobile Legends", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" },
+    { id: 5, name: "PUBG Mobile", icon: "https://web.cloudmoonapp.com/favicon.ico", url: "https://web.cloudmoonapp.com/" }
 ];
 
-function showSection(section) {
-    const hub = document.querySelector('.hub-card');
-    const display = document.getElementById('game-list-container');
-    
-    if (section === 'games') {
-        hub.style.display = 'none';
-        display.style.display = 'block';
-        renderGames();
-    } else {
-        hub.style.display = 'block';
-        display.style.display = 'none';
-    }
-}
-
-function renderGames() {
-    const grid = document.getElementById('games-grid');
-    grid.innerHTML = games.map(game => `
-        <div class="game-item">
+function renderGames(data) {
+    const list = document.getElementById('gameList');
+    list.innerHTML = data.map(game => `
+        <div class="game-card">
             <img src="${game.icon}" alt="${game.name}">
-            <div style="font-size:0.8rem; margin:5px 0;">${game.name}</div>
-            <button class="play-small" onclick="launch('${game.url}')">PLAY</button>
+            <button class="play-btn" onclick="openMirror('${game.url}')">PLAY NOW</button>
         </div>
     `).join('');
 }
 
-function launch(url) {
-    // This keeps Google Login working by opening a new window
-    window.open(url, '_blank', 'width=1000,height=600');
+// Initial Load
+renderGames(games);
+
+// Search Function
+function filterGames() {
+    const query = document.getElementById('gameSearch').value.toLowerCase();
+    const filtered = games.filter(g => g.name.toLowerCase().includes(query));
+    renderGames(filtered);
 }
 
-function login() {
-    // Direct login to the main site
-    window.open('https://web.cloudmoonapp.com/', '_blank');
+// Mirror System (Loads game on same address)
+function openMirror(url) {
+    document.getElementById('mirror-frame').src = url;
+    document.getElementById('mirror-layer').style.display = 'block';
+    document.getElementById('hub-ui').style.display = 'none';
+}
+
+function closeMirror() {
+    document.getElementById('mirror-frame').src = '';
+    document.getElementById('mirror-layer').style.display = 'none';
+    document.getElementById('hub-ui').style.display = 'block';
 }

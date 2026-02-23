@@ -3,44 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloudMoon Roxy+ Hub</title>
+    <title>CloudMoon Roxy+ Mirror</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://web.cloudmoonapp.com/favicon.ico">
 </head>
 <body>
 
-    <div class="hub-container">
-        <div class="user-profile">
-            <div class="avatar-glow">
-                <img src="https://web.cloudmoonapp.com/favicon.ico" alt="User">
-            </div>
+    <div id="hub-ui">
+        <div class="search-container">
+            <input type="text" id="gameSearch" placeholder="🔍 Search for a game..." onkeyup="filterGames()">
         </div>
 
         <div class="hub-card">
             <div class="hub-header">ROXY+ HUB</div>
             
-            <nav class="hub-menu">
-                <div class="menu-item active" onclick="showSection('dashboard')">
-                    <span>🏠</span> Dashboard
+            <div class="horizontal-scroll" id="gameList">
                 </div>
-                <div class="menu-item" onclick="showSection('games')">
-                    <span>🎮</span> Game List
-                </div>
-                <div class="menu-item" onclick="login()">
-                    <span>👤</span> Account / Login
-                </div>
-                <div class="menu-item" onclick="window.open('https://discord.gg/yourlink')">
-                    <span>💬</span> Discord
-                </div>
-            </nav>
         </div>
 
-        <div id="game-list-container" class="game-display" style="display:none;">
-            <div class="hub-header">AVAILABLE GAMES</div>
-            <div id="games-grid" class="grid">
-                </div>
-            <button class="back-btn" onclick="showSection('dashboard')">Back</button>
+        <div class="footer-nav">
+            <button class="nav-btn active">Dashboard</button>
+            <button class="nav-btn" onclick="openMirror('https://web.cloudmoonapp.com/')">Full App</button>
         </div>
+    </div>
+
+    <div id="mirror-layer">
+        <div class="top-controls">
+            <button onclick="closeMirror()">Back to Hub</button>
+            <span id="current-status">Playing: CloudMoon</span>
+        </div>
+        <iframe id="mirror-frame" src="" allow="autoplay; fullscreen; keyboard; gamepad"></iframe>
     </div>
 
     <script src="script.js"></script>
