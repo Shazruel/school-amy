@@ -1,0 +1,3 @@
+/main  https://web.cloudmoonapp.com/  200!
+/assets/* https://web.cloudmoonapp.com/:splat  200!
+/api/* https://web.cloudmoonapp.com/:splat  200!
